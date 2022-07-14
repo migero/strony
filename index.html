@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../public/styles.css" /> -->
+    <title>extract tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-gray-200">
+    <div class="bg-white md:container md:mx-auto rounded-2xl">
+      <div class="m-4 p-8">
+        <p class="font-bold">Tu wklej HTML:</p>
+        <form>
+          <textarea
+            rows="50"
+            class="bg-gray-50 mt-2 rounded-2xl min-w-full h-96"
+            id="index-textarea"
+          >
+          </textarea>
+        </form>
+
+        <!-- wynik -->
+        <div class="mt-10">
+          <p class="font-semibold">Wynik:</p>
+
+          <!-- wynik undefinded -->
+          <div id="result-undefined" class="mt-8">
+            <span class="ml-10 font-normal text-gray-300"
+              >nic nie wpisałeś</span
+            >
+          </div>
+
+          <!-- wynik not understandable -->
+          <div id="result-not-understandable" class="mt-8">
+            <span class="ml-10 font-normal text-gray-300"
+              >nie rozumiem co wkleiłeś/łaś</span
+            >
+          </div>
+
+          <!-- wynik dla index -->
+          <div id="result-for-index" class="mt-8">
+            <div>
+              <p class="font-semibold mb-4 text-blue-400">Index</p>
+            </div>
+            <div class="">
+              <p class="font-semibold">
+                Nazwa projektu:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="project-name-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="project-name"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Miejscowość:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="project-city-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="project-city"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Kraj:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="project-country-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="project-country"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+            <!-- 
+            <div class="mt-2">
+              <p class="font-semibold">
+                Klient:
+                <span
+                  id="project-client"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="project-client-button"
+                >
+                  kopiuj
+                </button>
+              </p>
+            </div> -->
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Data:
+                <span
+                  id="project-data"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Kategorie:
+                <span id="categories">
+                  <span
+                    class="px-5 py-1 font-normal text-xs text-gray-6 rounded-2xl max-w-full bg-gray-200 ml-2"
+                    >COMPETITION</span
+                  >
+                </span>
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Grafika główna projektu (ikonka):
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="project-ico-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="project-ico"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+          </div>
+          <!-- koniec wynik dla index -->
+
+          <!-- wynik dla app -->
+          <div id="result-for-app" class="mt-8">
+            <div>
+              <p class="font-semibold mb-4 text-blue-400">Aplikacja</p>
+            </div>
+            <div>
+              <p class="font-semibold">
+                Nazwa obrazka aplikacji:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="app-image-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="app-image"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Nazwa aplikacji:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="app-name-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="app-name"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Opis aplikacji:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="app-description-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="app-description"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Android link:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="app-android-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="app-android"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                iOS link:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="app-ios-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="app-ios"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Klient:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="app-client-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="app-client"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+          </div>
+          <!-- koniec wynik dla app -->
+
+          <!-- wynik dla anim -->
+          <div id="result-for-anim" class="mt-8">
+            <div>
+              <p class="font-semibold mb-4 text-blue-400">Animacja</p>
+            </div>
+
+            <div>
+              <p class="font-semibold">
+                Link do youtube'a:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="anim-link-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="anim-link"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Klient:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="anim-client-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="anim-client"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+          </div>
+          <!-- koniec wynik dla anim -->
+
+          <!-- wynik dla image -->
+          <div id="result-for-images" class="mt-8">
+            <div>
+              <p class="font-semibold mb-4 text-blue-400">
+                Projekt z Obrazkami
+              </p>
+            </div>
+
+            <div id="container-images"></div>
+
+            <div class="mt-2">
+              <p class="font-semibold">
+                Klient:
+                <button
+                  type="button"
+                  class="text-xs text-white bg-green-600 ml-3 uppercase p-1 rounded-md hover:bg-gray-600"
+                  id="images-client-button"
+                >
+                  kopiuj
+                </button>
+                <span
+                  id="images-client"
+                  class="px-5 py-1 ml-10 font-normal text-xs text-gray-6 bg-gray-200 rounded-2xl max-w-full"
+                  >drak danych</span
+                >
+              </p>
+            </div>
+          </div>
+          <!-- koniec wynik dla image -->
+        </div>
+      </div>
+    </div>
+    <script src="./dummy.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
